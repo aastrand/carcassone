@@ -1,0 +1,109 @@
+{
+    "base_tiles": {
+        "allgrass": {
+            "positions": {
+                "middle": "farmer"
+            },
+            "edges": {
+                "top": "field",
+                "bottom": "field",
+                "left": "field",
+                "right": "field"
+            },
+            "fieldsets": [
+                ["topleft", "topright", "bottomleft", "bottomright"]
+            ]
+        },
+        "cloister": {
+            "inherits": "allgrass",
+            "positions": {
+                "middle": "monk",
+                "bottomright": "farmer"
+            }
+        },
+        "cloisterroad": {
+            "inherits": "cloister",
+            "positions": {
+                "bottom": "thief"
+            },
+            "edges": {
+                "bottom": "road"
+            }
+        },
+        "allcity": {
+            "positions": {
+                "middle": "knight"
+            },
+            "edges": {
+                "top": "city",
+                "bottom": "city",
+                "left": "city",
+                "right": "city"
+            },
+            "shield": {
+                "topleft": "True"
+            },
+            "fieldsets": []
+        },
+        "topcity": {
+            "inherits": "allcity",
+            "positions": {
+                "top": "knight",
+                "bottom": "farmer"
+            },
+            "edges": {
+                "bottom": "field"
+            },
+            "shield": {
+                "topleft": "False"
+            },
+            "fieldsets": [
+                ["bottomleft, bottomright"]
+            ]
+        },
+        "topcityshielded": {
+            "inherits": "topcity",
+            "shield": {
+                "topleft": "True"
+            }
+        },
+        "topcityroad": {
+            "inherits": "topcity",
+            "positions": {
+                "top": "knight",
+                "bottom": "thief"
+            },
+            "edges": {
+                "bottom": "road"
+            },
+            "fieldsets": [
+                ["bottomleft"],
+                ["bottomright"]
+            ]
+        },
+        "topcityroadshielded": {
+            "inherits": "topcityroad",
+            "shield": {
+                "topleft": "True"
+            }
+        }
+    },
+
+    "tiles": {
+        "1": "starter",
+        "2": "cloister",
+        "3": "cloister",
+        "4": "cloister",
+        "5": "cloister",
+        "6": "cloisterroad",
+        "7": "cloisterroad",
+        "8": "allcity",
+        "9": "topcityshielded",
+        "19": "topcity",
+        "11": "topcity",
+        "12": "topcity",
+        "13": "topcityroad",
+        "14": "topcityroadshielded",
+        "15": "topcityroadshielded"
+    }
+}
