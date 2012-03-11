@@ -2,6 +2,7 @@
 
 import sys
 import simplejson
+import logging
 
 from carcassonne.engine.util import validate_tileset_config
 
@@ -10,10 +11,13 @@ def main():
         sys.stderr.write("Usage: validate_tileset <file>\n")
         return 1
 
+    logging.getLogger().setLevel(logging.DEBUG)
+
     filecontent = open(sys.argv[1]).read()
     json = simplejson.loads(filecontent)
 
-    validate_tileset_config(json, set(['thief', 'knight', 'monk', 'farmer']))
+    validate_tileset_config(json, set(['thief', 'knight', 'monk', 'farmer']),
+                            set(['city', 'field', 'road']))
 
     sys.stdout.write('File %s is a valid tileset.\n' % (sys.argv[1]))
 
