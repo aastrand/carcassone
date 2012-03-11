@@ -101,7 +101,7 @@ class TileTest(unittest.TestCase):
                             }
 
     def test_tile_instantiation(self):
-        t = tile.Tile(self.allgrass_tile)
+        t = tile.Tile('grass', self.allgrass_tile)
 
         self.assertEquals(t.edges, [0, 0, 0, 0], 'All edges should be fields')
 
@@ -114,7 +114,7 @@ class TileTest(unittest.TestCase):
         self.assertEquals(t.shield, "top-left")
 
     def test_tile_fieldsets(self):
-        t = tile.Tile(self.topcityroad)
+        t = tile.Tile('topcityroad', self.topcityroad)
 
         self.assertEquals(t.edges, ['', '', 2, ''], 'Bottom edge should be road')
 
@@ -131,10 +131,10 @@ class TileTest(unittest.TestCase):
         self.assertEquals(t.shield, None)
 
     def test_is_legal_adjecent_to(self):
-        city = tile.Tile(self.topcityroad)
-        grass = tile.Tile(self.allgrass_tile)
-        topcity = tile.Tile(self.topcity)
-        crossroads = tile.Tile(self.crossroads)
+        city = tile.Tile('topcityroad', self.topcityroad)
+        grass = tile.Tile('grass', self.allgrass_tile)
+        topcity = tile.Tile('topcity', self.topcity)
+        crossroads = tile.Tile('crossroads', self.crossroads)
 
         baseval = [False]*4*4*4
         self._all_combos(city, grass, baseval)
@@ -200,6 +200,28 @@ class TileTest(unittest.TestCase):
                 for rot2 in xrange(0, 4):
                     self.assertEquals(t1.is_legal_adjecent_to(t2, edge, rot1, rot2), vals[i])
                     i += 1
+
+    def test_get_edge(self):
+        t = tile.Tile('crossroads', self.crossroads)
+        self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg0), 0)
+        self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg90), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg180), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg270), 2)
+
+        self.assertEquals(t.get_edge(tile.EDGES.bottom, tile.ROTATIONS.deg0), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.bottom, tile.ROTATIONS.deg90), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.bottom, tile.ROTATIONS.deg180), 0)
+        self.assertEquals(t.get_edge(tile.EDGES.bottom, tile.ROTATIONS.deg270), 2)
+
+        self.assertEquals(t.get_edge(tile.EDGES.left, tile.ROTATIONS.deg0), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.left, tile.ROTATIONS.deg90), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.left, tile.ROTATIONS.deg180), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.left, tile.ROTATIONS.deg270), 0)
+
+        self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg0), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg90), 0)
+        self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg180), 2)
+        self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg270), 2)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

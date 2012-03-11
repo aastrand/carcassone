@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 import sys
-import simplejson
 import logging
 
 from carcassonne.engine.util import validate_tileset_config
+from carcassonne.engine.util import load_config
 
 def main():
     if len(sys.argv) < 1:
@@ -13,8 +13,7 @@ def main():
 
     logging.getLogger().setLevel(logging.DEBUG)
 
-    filecontent = open(sys.argv[1]).read()
-    json = simplejson.loads(filecontent)
+    json = load_config(sys.argv[1])
 
     validate_tileset_config(json, set(['thief', 'knight', 'monk', 'farmer']),
                             set(['city', 'field', 'road']))

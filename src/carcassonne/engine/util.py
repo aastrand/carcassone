@@ -6,6 +6,7 @@ Created on Mar 10, 2012
 
 import copy
 import logging
+import simplejson
 
 class UnsupportedOperationException(Exception):
     pass
@@ -79,13 +80,14 @@ VALID_POSITIONS = create_positions(BASE_POSITIONS, 1)
 def numeric_compare(x, y):
     return int(x) - int(y)
 
-""" Validates a json-enoded tileset
+def validate_tileset_config(json, valid_roles, valid_environments):
+    """ 
+    Validates a json-enoded tileset
     @param json tileset
     @type json json-encoded string
     @param valid_roles set of valid roles for positions
     @type valid_roles set of strings
     """
-def validate_tileset_config(json, valid_roles, valid_environments):
     assert json is not None
     assert valid_roles is not None and type(valid_roles) == set
 
@@ -134,3 +136,7 @@ def validate_tileset_config(json, valid_roles, valid_environments):
     numbers = sorted(numbers, cmp=numeric_compare)
     for i in xrange(0, len(numbers) - 1):
         assert (int(numbers[i+1]) - int(numbers[i])) == 1, "Error in tile numbering at tile #%d" % (i)
+
+def load_config(filename):
+    data = open(filename).read()
+    return simplejson.loads(data)

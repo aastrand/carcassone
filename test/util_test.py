@@ -4,9 +4,9 @@ Created on Mar 11, 2012
 @author: anders
 '''
 import unittest
-import simplejson
 
 import carcassonne.engine.util as util
+from carcassonne.engine.util import load_config
 
 class UtilTest(unittest.TestCase):
 
@@ -43,9 +43,8 @@ class UtilTest(unittest.TestCase):
             pass
 
     def test_validate(self):
-        content = open('data/vanilla_tileset.json').read()
-        json_content = simplejson.loads(content)
-        util.validate_tileset_config(json_content,
+        json = load_config('data/vanilla_tileset.json')
+        util.validate_tileset_config(json,
                                      set(['thief', 'knight', 'monk', 'farmer']),
                                      set(['city', 'field', 'road']))
 
