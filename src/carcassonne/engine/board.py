@@ -104,7 +104,7 @@ class Board(object):
             if type(n) is PlayedTile:
                 edge = relative_pos_to_edge(n.location, location)
                 if not n.tile.is_legal_adjecent_to(tile.tile, edge, n.rotation, rotation):
-                    logging.debug("Can't play tile at this position, has illegal neighbour: %s" % (n))
+                    #logging.debug("Can't play tile at this position, has illegal neighbour: %s" % (n))
                     return False
 
         return True
@@ -160,6 +160,8 @@ class Board(object):
             # add all neighbours that aren't played tiles == empty locations
             if type(n) is not PlayedTile:
                 self.edges.add(n)
+
+        logging.info("Played tile %s at location %s, rotated %s" % (tid, location, rotation))
 
     def extremes(self):
         """ Returns the topleft and bottomright corner extreme locations of
