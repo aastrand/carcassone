@@ -7,7 +7,7 @@ from carcassonne.engine.util import validate_tileset_config
 from carcassonne.engine.util import load_config
 
 def main():
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 2:
         sys.stderr.write("Usage: validate_tileset <file>\n")
         return 1
 

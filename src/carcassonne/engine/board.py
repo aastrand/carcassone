@@ -3,6 +3,7 @@ Created on Mar 11, 2012
 
 @author: anders
 '''
+import logging
 
 from carcassonne.engine.tile import Tile, EDGES, ROTATIONS
 
@@ -46,6 +47,7 @@ class Board(object):
         self.grid = {}
         self.tilesleft = set()
         self.reverse = {}
+        self.edges = set()
 
         tileset = [(tid, name) for tid, name in tiles.items()]
         tileset = sorted(tileset, cmp=compare_tileset)
@@ -77,48 +79,104 @@ class Board(object):
         self.root = self.boardtiles['1']
         self._play_tile('1', (0,0), ROTATIONS.deg0)
 
-
-    def add_to_board(self, tid, location, rotation):
+    def is_legal_on_location(self, tid, location, rotation):
         assert type(rotation) == int
 
         if tid not in self.tilesleft:
-            raise ValueError("Tile %s is already played" % (tid))
+            logging.debug("Tile %s is already played" % (tid))
+            return False
 
         if location in self.grid:
-            raise ValueError("Location %s, %s is already occupied" % (location))
+            logging.debug("Location %s, %s is already occupied" % (location))
+            return False
 
         tile = self.boardtiles[tid]
 
         # Get top, bottom, left, right tiles .. if any
-        neighbours = []
-        neighbours.append(self.grid.get((location[0], location[1] - 1), None))
-        neighbours.append(self.grid.get((location[0], location[1] + 1), None))
-        neighbours.append(self.grid.get((location[0] - 1, location[1]), None))
-        neighbours.append(self.grid.get((location[0] + 1, location[1]), None))
+        neighbours = self.neighbours_for(location)
+
+        if not any(type(n) is PlayedTile for n in neighbours):
+            logging.debug("Can't play at this location, no neighbours exist: %s, %s" % (location))
+            return False
 
         # Check if it's ok
-        all_none = True
         for n in neighbours:
-            if n is not None:
-                all_none = False
+            if type(n) is PlayedTile:
                 edge = relative_pos_to_edge(n.location, location)
                 if not n.tile.is_legal_adjecent_to(tile.tile, edge, n.rotation, rotation):
-                    raise ValueError("Can't play tile at this position, has illegal neighbour: %s" % (n))
+                    logging.debug("Can't play tile at this position, has illegal neighbour: %s" % (n))
+                    return False
 
-        if all_none:
-            raise ValueError("Can't play at this location, no neighbours exist: %s, %s" % (location))
+        return True
+
+    def neighbours_for(self, location):
+        neighbours = []
+        neighbours.append(self.grid.get((location[0], location[1] - 1), (location[0], location[1] - 1)))
+        neighbours.append(self.grid.get((location[0], location[1] + 1), (location[0], location[1] + 1)))
+        neighbours.append(self.grid.get((location[0] - 1, location[1]), (location[0] - 1, location[1])))
+        neighbours.append(self.grid.get((location[0] + 1, location[1]), (location[0] + 1, location[1])))
+
+        return neighbours
+
+    def add_to_board(self, tid, location, rotation):
+        assert type(rotation) == int
+
+        if not self.is_legal_on_location(tid, location, rotation):
+            raise ValueError("Tile %s is illegal on location: %s with rotation: %s" % (tid, location, rotation))
 
         # Add ourself, set values
         self._play_tile(tid, location, rotation)
 
+        tile = self.boardtiles[tid]
         # Second pass, add ourself as neighbours!
-        for n in neighbours:
-            if n is not None:
+        for n in self.neighbours_for(location):
+            if type(n) is PlayedTile:
                 n.neighbours.append(tile)
 
+    def playable_locations(self, for_tile=None):
+        # if not for a specific tile, return the whole set
+        if not for_tile:
+            return self.edges
+        else:
+            # else match
+            locations = set()
+            for l in self.edges:
+                for r in ROTATIONS.values():
+                    if self.is_legal_on_location(for_tile, l, ROTATIONS[r]):
+                        locations.add(l)
+            return locations
+
     def _play_tile(self, tid, location, rotation):
+        if location in self.edges:
+            self.edges.remove(location)
+
         tile = self.boardtiles[tid]
         tile.location = location
         tile.rotation = rotation
         self.grid[location] = tile
         self.tilesleft.remove(tid)
+
+        for n in self.neighbours_for(location):
+            # add all neighbours that aren't played tiles == empty locations
+            if type(n) is not PlayedTile:
+                self.edges.add(n)
+
+    def extremes(self):
+        """ Returns the topleft and bottomright corner extreme locations of
+        the current board state.
+        """
+        x = set(e[0] for e in self.edges)
+        y = set(e[1] for e in self.edges)
+        return (min(x), max(y)), (max(x), min(y))
+
+    def dimensions(self):
+        """ Returns the board size that would be needed in order to place
+        this board, includes edges.
+        """
+        e = self.extremes()
+        return ((abs(e[0][0]) + 1 + e[1][0]),
+                (abs(e[1][1]) + 1 + e[0][1]))
+
+    def __repr__(self):
+        return "Played tiles: %d\nTiles left: %s " % ((len(self.boardtiles) - len(self.tilesleft)),
+                                                        len(self.tilesleft))

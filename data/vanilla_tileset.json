@@ -193,7 +193,8 @@
                 "bottom": "thief"
             },
             "edges": {
-                "left": "road"
+                "left": "road",
+                "bottom": "road"
             },
             "fieldsets": [
                 ["top-left", "top-right", "bottom-right"],
@@ -206,7 +207,8 @@
                 "bottom": "thief"
             },
             "edges": {
-                "right": "road"
+                "right": "road",
+                "bottom": "road"
             },
             "fieldsets": [
                 ["top-left", "top-right", "bottom-left"],

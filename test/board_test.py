@@ -7,7 +7,7 @@ import unittest
 
 import carcassonne.engine.tile as tile
 
-from carcassonne.engine.board import Board, ConfigError
+from carcassonne.engine.board import Board, ConfigError, PlayedTile
 from carcassonne.engine.util import load_config
 
 class BoardTest(unittest.TestCase):
@@ -199,6 +199,82 @@ class BoardTest(unittest.TestCase):
             self.fail("Tile should have no neighbours")
         except ValueError, v:
             pass
+
+    def test_is_legal_on_location(self):
+        b = Board(self.override_pos_conf)
+        b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
+
+        self.assertTrue(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg90))
+        self.assertFalse(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg180))
+        self.assertFalse(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg270))
+        self.assertFalse(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg0))
+
+    def test_neighbours_for(self):
+        b = Board(self.override_pos_conf)
+        b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
+
+        n = b.neighbours_for((0,0))
+        self.assertEquals(type(n[0]), PlayedTile)
+        self.assertEquals(type(n[1]), tuple)
+        self.assertEquals(type(n[2]), tuple)
+        self.assertEquals(type(n[3]), tuple)
+
+        n = b.neighbours_for((0,-1))
+        self.assertEquals(type(n[0]), tuple)
+        self.assertEquals(type(n[1]), PlayedTile)
+        self.assertEquals(type(n[2]), tuple)
+        self.assertEquals(type(n[3]), tuple)
+
+        n = b.neighbours_for((10,10))
+        self.assertTrue(all(type(l) is tuple for l in n))
+
+    def test_playable_locations(self):
+        b = Board(self.override_pos_conf)
+        l = b.playable_locations()
+        self.assertEquals(len(l), 4)
+
+        # can only play cloister below starter
+        l = b.playable_locations('2')
+        self.assertEquals(len(l), 1)
+        self.assertEquals(l.pop(), (0, -1))
+
+        b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
+        l = b.playable_locations()
+        # remove 1, add 3 => 6
+        self.assertEquals(len(l), 6)
+
+    def test_dimensions(self):
+        b = Board(self.override_pos_conf)
+        self.assertEquals(b.dimensions(), (3,3))
+
+        b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
+        self.assertEquals(b.dimensions(), (3,4))
+
+        b.add_to_board('6', (1, 0), tile.ROTATIONS.deg90)
+        self.assertEquals(b.dimensions(), (4,4))
+
+        b.add_to_board('7', (-1, 0), tile.ROTATIONS.deg270)
+        self.assertEquals(b.dimensions(), (5,4))
+
+        b.add_to_board('4', (2, 0), tile.ROTATIONS.deg180)
+        self.assertEquals(b.dimensions(), (6,4))
+
+    def test_extremes(self):
+        b = Board(self.override_pos_conf)
+        self.assertEquals(b.extremes(), ((-1,1), (1,-1)))
+
+        b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
+        self.assertEquals(b.extremes(), ((-1,1), (1,-2)))
+
+        b.add_to_board('6', (1, 0), tile.ROTATIONS.deg90)
+        self.assertEquals(b.extremes(), ((-1,1), (2,-2)))
+
+        b.add_to_board('7', (-1, 0), tile.ROTATIONS.deg270)
+        self.assertEquals(b.extremes(), ((-2,1), (2,-2)))
+
+        b.add_to_board('4', (2, 0), tile.ROTATIONS.deg180)
+        self.assertEquals(b.extremes(), ((-2,1), (3,-2)))
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_setup']

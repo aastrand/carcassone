@@ -4,7 +4,6 @@ Created on Mar 10, 2012
 @author: anders
 '''
 
-import copy
 from carcassonne.engine.util import Enum
 
 # TODO: make expansion aware
