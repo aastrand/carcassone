@@ -6,7 +6,7 @@ import random
 
 from carcassonne.engine.util import validate_tileset_config
 from carcassonne.engine.util import load_config
-from carcassonne.engine.board import Board
+from carcassonne.engine.board import Board, PlayedTile
 from carcassonne.engine.tile import ROTATIONS
 from carcassonne.render.render import HtmlRenderer
 
@@ -30,7 +30,21 @@ def main():
     while len(b.tilesleft) > 0:
         tile = random.sample(b.tilesleft, 1)[0]
         locations = b.playable_locations(tile)
-        location = random.sample(locations, 1)[0]
+
+        location = None
+        location_neighbour_count = 0
+        for l in locations:
+            location_neighbours = b.neighbours_for(l)
+            count = 0
+            for n in location_neighbours:
+                if type(n) is PlayedTile:
+                    count += 1
+
+            if count > location_neighbour_count:
+                print "new count %d" % count
+                location = l
+
+        #location = random.sample(locations, 1)[0]
 
         for r in ROTATIONS.values():
             if b.is_legal_on_location(tile, location, ROTATIONS[r]):
