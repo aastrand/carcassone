@@ -40,41 +40,23 @@ def relative_pos_to_edge(location1, location2):
 class Board(object):
     def __init__(self, config):
         self.config = config
-        self._setup_tiles(config['base_tiles'], config['tiles'])
+        self._setup_tiles(config['tiles'])
 
-    def _setup_tiles(self, base_tiles, tiles):
+    def _setup_tiles(self, tiles):
         self.boardtiles = {}
         self.grid = {}
         self.tilesleft = set()
         self.reverse = {}
         self.edges = set()
 
-        tileset = [(tid, name) for tid, name in tiles.items()]
+        tileset = [(tid, tile) for tid, tile in tiles.items()]
         tileset = sorted(tileset, cmp=compare_tileset)
 
-        last_size = -1
-        # Resolve dependencies .. reduce tileset and loop until empty
-        while len(tileset) > 0:
-            for tid, name in tileset:
-                father = None
-                # Has father? Copy from it
-                if "inherits" in base_tiles[name]:
-                    fathername = base_tiles[name]['inherits']
-                    if fathername in self.reverse:
-                        father = self.reverse[fathername][0].tile
-                    else:
-                        break
-
-                self.boardtiles[tid] = PlayedTile(Tile(name, base_tiles[name], father), [])
-                self.reverse.setdefault(name, []).append(self.boardtiles[tid])
-                self.tilesleft.add(tid)
-
-                tileset.remove((tid, name))
-
-            if last_size == len(tileset):
-                raise ConfigError("ERROR: Could not reduce dependencies in tileset: %s" % (tileset))
-
-            last_size = len(tileset)
+        for tid, tile in tileset:
+            name = tile['name']
+            self.boardtiles[tid] = PlayedTile(Tile(name, tile), [])
+            self.reverse.setdefault(name, []).append(self.boardtiles[tid])
+            self.tilesleft.add(tid)
 
         self.root = self.boardtiles['1']
         self._play_tile('1', (0,0), ROTATIONS.deg0)

@@ -13,527 +13,10 @@ from carcassonne.engine.util import load_config
 class BoardTest(unittest.TestCase):
 
     def setUp(self):
-        self.broken_conf = {
-                                "base_tiles": {
-                                    "starter": {
-                                        "positions": {
-                                            "top": "knight",
-                                            "middle": "thief",
-                                            "bottom": "farmer",
-                                            "top-left": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "road",
-                                            "left": "road",
-                                            "bottom": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["bottom-right", "bottom-left"],
-                                            ["top-left", "top-right"]
-                                        ]
-                                    },
-                                    "cloister": {
-                                        "inherits": "cloisterroad",
-                                        "positions": {
-                                            "middle": "monk",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "field",
-                                            "right": "field",
-                                            "bottom": "field",
-                                            "left": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "cloisterroad": {
-                                        "inherits": "cloister",
-                                        "positions": {
-                                            "bottom": "thief"
-                                        },
-                                        "edges": {
-                                            "bottom": "road"
-                                        }
-                                    }
-                                },
-
-                                "tiles": {
-                                    "1": "starter",
-                                    "2": "cloister",
-                                    "3": "cloister",
-                                    "4": "cloister",
-                                    "5": "cloister",
-                                    "6": "cloisterroad",
-                                    "7": "cloisterroad"
-                                }
-                            }
-
-        self.override_pos_conf = {
-                                    "base_tiles": {
-                                        "starter": {
-                                            "positions": {
-                                                "top": "knight",
-                                                "middle": "thief",
-                                                "bottom": "farmer",
-                                                "top-left": "farmer"
-                                            },
-                                            "edges": {
-                                                "top": "city",
-                                                "right": "road",
-                                                "left": "road",
-                                                "bottom": "field"
-                                            },
-                                            "fieldsets": [
-                                                ["bottom-right", "bottom-left"],
-                                                ["top-left", "top-right"]
-                                            ]
-                                        },
-                                        "cloister": {
-                                            "positions": {
-                                                "middle": "monk",
-                                                "bottom": "farmer"
-                                            },
-                                            "edges": {
-                                                "top": "field",
-                                                "right": "field",
-                                                "bottom": "field",
-                                                "left": "field"
-                                            },
-                                            "fieldsets": [
-                                                ["top-left", "top-right", "bottom-right", "bottom-left"]
-                                            ]
-                                        },
-                                        "cloisterroad": {
-                                            "inherits": "cloister",
-                                            "positions": {
-                                                "bottom": "thief",
-                                                "bottom-right": "farmer"
-                                            },
-                                            "edges": {
-                                                "bottom": "road"
-                                            }
-                                        }
-                                    },
-
-                                    "tiles": {
-                                        "1": "starter",
-                                        "2": "cloister",
-                                        "3": "cloister",
-                                        "4": "cloister",
-                                        "5": "cloister",
-                                        "6": "cloisterroad",
-                                        "7": "cloisterroad"
-                                    }
-                                }
-
-        self.full_game_conf = {
-                                "base_tiles": {
-                                    "starter": {
-                                        "positions": {
-                                            "top": "knight",
-                                            "middle": "thief",
-                                            "bottom": "farmer",
-                                            "top-left": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "road",
-                                            "left": "road",
-                                            "bottom": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["bottom-right", "bottom-left"],
-                                            ["top-left", "top-right"]
-                                        ]
-                                    },
-                                    "cloister": {
-                                        "positions": {
-                                            "middle": "monk",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "field",
-                                            "right": "field",
-                                            "bottom": "field",
-                                            "left": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "cloisterroad": {
-                                        "inherits": "cloister",
-                                        "positions": {
-                                            "bottom": "thief"
-                                        },
-                                        "edges": {
-                                            "bottom": "road"
-                                        }
-                                    },
-                                    "allcity": {
-                                        "positions": {
-                                            "middle": "knight"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "bottom": "city",
-                                            "left": "city",
-                                            "right": "city"
-                                        },
-                                        "shield": "top-left",
-                                        "fieldsets": []
-                                    },
-                                    "topcity": {
-                                        "inherits": "allcity",
-                                        "positions": {
-                                            "bottom": "farmer"
-                                        },
-                                        "edges": {
-                                            "bottom": "field"
-                                        },
-                                        "shield": "",
-                                        "fieldsets": [
-                                            ["bottom-left", "bottom-right"]
-                                        ]
-                                    },
-                                    "topcityshielded": {
-                                        "inherits": "topcity",
-                                        "shield": "top-left"
-                                    },
-                                    "topcityroad": {
-                                        "inherits": "topcity",
-                                        "positions": {
-                                            "top": "knight",
-                                            "bottom": "thief",
-                                            "bottom-left": "farmer",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "bottom": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["bottom-left"],
-                                            ["bottom-right"]
-                                        ]
-                                    },
-                                    "topcityroadshielded": {
-                                        "inherits": "topcityroad",
-                                        "shield": "top-left"
-                                    },
-                                    "topleftcity": {
-                                        "positions": {
-                                            "top-left": "knight",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "field",
-                                            "bottom": "field",
-                                            "left": "city"
-                                        },
-                                        "fieldsets": [
-                                            ["top-right", "bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "topleftcityshielded": {
-                                        "inherits": "topleftcity",
-                                        "shield": "top-left"
-                                    },
-                                    "topleftcityroad": {
-                                        "positions": {
-                                            "bottom": "thief",
-                                            "middle": "farmer",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "road",
-                                            "bottom": "road",
-                                            "left": "city"
-                                        },
-                                        "fieldsets": [
-                                            ["top-right", "bottom-left"],
-                                            ["bottom-right"]
-                                        ]
-                                    },
-                                    "topleftcityroadshielded": {
-                                        "inherits": "topleftcityroad",
-                                        "shield": "top-left"
-                                    },
-                                    "middlecity": {
-                                        "positions": {
-                                            "middle": "knight",
-                                            "top": "farmer",
-                                            "bottom": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "field",
-                                            "right": "city",
-                                            "bottom": "field",
-                                            "left": "city"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right"],
-                                            ["bottom-left", "bottom-right"]
-                                        ]
-                                    },
-                                    "middlecityshielded": {
-                                        "inherits": "middlecity",
-                                        "shield": "middle-right"
-                                    },
-                                    "topleftcornercity": {
-                                        "inherits": "topleftcity" 
-                                    },
-                                    "topbottomcity": {
-                                        "positions": {
-                                            "top": "knight",
-                                            "middle": "farmer",
-                                            "bottom": "knight"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "field",
-                                            "bottom": "city",
-                                            "left": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "toponeedgecity": {
-                                        "positions": {
-                                            "top": "knight",
-                                            "bottom-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "field",
-                                            "bottom": "field",
-                                            "left": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "toponeedgecityroadturnleft": {
-                                        "inherits": "toponeedgecity",
-                                        "positions": {
-                                            "bottom": "thief"
-                                        },
-                                        "edges": {
-                                            "left": "road",
-                                            "bottom": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-right"],
-                                            ["bottom-left"]
-                                        ]
-                                    },
-                                    "toponeedgecityroadturnright": {
-                                        "inherits": "toponeedgecity",
-                                        "positions": {
-                                            "bottom": "thief"
-                                        },
-                                        "edges": {
-                                            "right": "road",
-                                            "bottom": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right", "bottom-left"],
-                                            ["bottom-right"]
-                                        ]
-                                    },
-                                    "toponeedgecitycrossroads": {
-                                        "inherits": "toponeedgecity",
-                                        "positions": {
-                                            "bottom": "thief",
-                                            "middle-right": "thief",
-                                            "middle-left": "thief"
-                                        },
-                                        "edges": {
-                                            "right": "road",
-                                            "left": "road",
-                                            "bottom": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right"],
-                                            ["bottom-right", "bottom-left"]
-                                        ]
-                                    },
-                                    "toponeedgecityroadmiddle": {
-                                        "positions": {
-                                            "bottom": "farmer",
-                                            "middle": "thief",
-                                            "top": "knight"
-                                        },
-                                        "edges": {
-                                            "top": "city",
-                                            "right": "road",
-                                            "left": "road",
-                                            "bottom": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right"],
-                                            ["bottom-right"],
-                                            ["bottom-left"]
-                                        ]
-                                    },
-                                    "topmiddlebottomroad": {
-                                        "positions": {
-                                            "middle": "thief",
-                                            "middle-left": "farmer",
-                                            "middle-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "road",
-                                            "bottom": "road",
-                                            "right": "field",
-                                            "left": "field"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "bottom-left"],
-                                            ["bottom-right", "top-right"]
-                                        ]
-                                    },
-                                    "leftturnroad": {
-                                        "positions": {
-                                            "middle": "thief",
-                                            "top-right": "farmer",
-                                            "bottom-left": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "field",
-                                            "bottom": "road",
-                                            "right": "field",
-                                            "left": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "bottom-right", "top-right"],
-                                            ["bottom-left"]
-                                        ]
-                                    },
-                                    "crossroads": {
-                                        "positions": {
-                                            "top": "farmer",
-                                            "middle-left": "thief",
-                                            "middle-right": "thief",
-                                            "bottom": "thief",
-                                            "bottom-right": "farmer",
-                                            "bottom-left": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "field",
-                                            "left": "road",
-                                            "right": "road",
-                                            "bottom": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left", "top-right"],
-                                            ["bottom-right"],
-                                            ["bottom-left"]
-                                        ]
-                                    },
-                                    "allcrossroads": {
-                                        "inherits": "crossroads",
-                                        "positions": {
-                                            "top": "thief",
-                                            "top-left": "farmer",
-                                            "top-right": "farmer"
-                                        },
-                                        "edges": {
-                                            "top": "road"
-                                        },
-                                        "fieldsets": [
-                                            ["top-left"],
-                                            ["top-right"],
-                                            ["bottom-right"],
-                                            ["bottom-left"]
-                                        ]
-                                    }
-                                },
-                            
-                                "tiles": {
-                                    "1": "starter",
-                                    "2": "cloister",
-                                    "3": "cloister",
-                                    "4": "cloister",
-                                    "5": "cloister",
-                                    "6": "cloisterroad",
-                                    "7": "cloisterroad",
-                                    "8": "allcity",
-                                    "9": "topcityshielded",
-                                    "10": "topcity",
-                                    "11": "topcity",
-                                    "12": "topcity",
-                                    "13": "topcityroad",
-                                    "14": "topcityroadshielded",
-                                    "15": "topcityroadshielded",
-                                    "16": "topleftcity",
-                                    "17": "topleftcity",
-                                    "18": "topleftcity",
-                                    "19": "topleftcityshielded",
-                                    "20": "topleftcityshielded",
-                                    "21": "topleftcityroad",
-                                    "22": "topleftcityroad",
-                                    "23": "topleftcityroad",
-                                    "24": "topleftcityroadshielded",
-                                    "25": "topleftcityroadshielded",
-                                    "26": "middlecity",
-                                    "27": "middlecityshielded",
-                                    "28": "middlecityshielded",
-                                    "29": "topleftcornercity",
-                                    "30": "topleftcornercity",
-                                    "31": "topbottomcity",
-                                    "32": "topbottomcity",
-                                    "33": "topbottomcity",
-                                    "34": "toponeedgecity",
-                                    "35": "toponeedgecity",
-                                    "36": "toponeedgecity",
-                                    "37": "toponeedgecity",
-                                    "38": "toponeedgecity",
-                                    "39": "toponeedgecityroadturnleft",
-                                    "40": "toponeedgecityroadturnleft",
-                                    "41": "toponeedgecityroadturnleft",
-                                    "42": "toponeedgecityroadturnright",
-                                    "43": "toponeedgecityroadturnright",
-                                    "44": "toponeedgecityroadturnright",
-                                    "45": "toponeedgecitycrossroads",
-                                    "46": "toponeedgecitycrossroads",
-                                    "47": "toponeedgecitycrossroads",
-                                    "48": "toponeedgecityroadmiddle",
-                                    "49": "toponeedgecityroadmiddle",
-                                    "50": "toponeedgecityroadmiddle",
-                                    "50": "topmiddlebottomroad",
-                                    "51": "topmiddlebottomroad",
-                                    "52": "topmiddlebottomroad",
-                                    "53": "topmiddlebottomroad",
-                                    "54": "topmiddlebottomroad",
-                                    "55": "topmiddlebottomroad",
-                                    "56": "topmiddlebottomroad",
-                                    "57": "topmiddlebottomroad",
-                                    "58": "leftturnroad",
-                                    "59": "leftturnroad",
-                                    "60": "leftturnroad",
-                                    "61": "leftturnroad",
-                                    "62": "leftturnroad",
-                                    "63": "leftturnroad",
-                                    "64": "leftturnroad",
-                                    "65": "leftturnroad",
-                                    "66": "leftturnroad",
-                                    "67": "crossroads",
-                                    "68": "crossroads",
-                                    "69": "crossroads",
-                                    "70": "crossroads",
-                                    "71": "allcrossroads"
-                                }
-                            }
+        self.conf = load_config('data/basic_tileset.json')
 
     def test_setup(self):
-        config = load_config('data/vanilla_tileset.json')
-        b = Board(config)
+        b = Board(self.conf)
 
         for t in b.boardtiles.values():
             self.assertEquals(len(t.tile.edges), 4, 'Every tile once loaded into the board must have 4 edges: %s' % (t))
@@ -545,19 +28,8 @@ class BoardTest(unittest.TestCase):
                 self.assertTrue(pos not in posset, "Multuple positions for same rol in tile %s" % (t))
                 posset.add(pos)
 
-    def test_resolve_dep_fail(self):
-        try:
-            _ = Board(self.broken_conf)
-            self.fail("Circular dependencies are illegal")
-        except ConfigError:
-            pass
-
-    def test_override_pos(self):
-        b = Board(self.override_pos_conf)
-        self.assertEquals(len(b.boardtiles['6'].tile.positions), 3)
-
     def test_add_to_board(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         self.assertEquals(b.grid.get((0, -1), None), None)
         b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
         self.assertEquals(b.grid[(0, -1)].tile.name, "cloister")
@@ -603,7 +75,7 @@ class BoardTest(unittest.TestCase):
             pass
 
     def test_is_legal_on_location(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
 
         self.assertTrue(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg90))
@@ -612,7 +84,7 @@ class BoardTest(unittest.TestCase):
         self.assertFalse(b.is_legal_on_location('6', (1, 0), tile.ROTATIONS.deg0))
 
     def test_neighbours_for(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
 
         n = b.neighbours_for((0,0))
@@ -631,7 +103,7 @@ class BoardTest(unittest.TestCase):
         self.assertTrue(all(type(l) is tuple for l in n))
 
     def test_playable_locations(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         l = b.playable_locations()
         self.assertEquals(len(l), 4)
 
@@ -646,7 +118,7 @@ class BoardTest(unittest.TestCase):
         self.assertEquals(len(l), 6)
 
     def test_dimensions(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         self.assertEquals(b.dimensions(), (3,3))
 
         b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
@@ -662,7 +134,7 @@ class BoardTest(unittest.TestCase):
         self.assertEquals(b.dimensions(), (6,4))
 
     def test_extremes(self):
-        b = Board(self.override_pos_conf)
+        b = Board(self.conf)
         self.assertEquals(b.extremes(), ((-1,1), (1,-1)))
 
         b.add_to_board('2', (0, -1), tile.ROTATIONS.deg0)
@@ -690,7 +162,7 @@ class BoardTest(unittest.TestCase):
         DEBUG:root:Could not play tile 2, Played tiles: 8
         """
 
-        b = Board(self.full_game_conf)
+        b = Board(self.conf)
         b.add_to_board('58', (-1, 0), tile.ROTATIONS.deg180)
         b.add_to_board('17', (-1, -1), tile.ROTATIONS.deg180)
         b.add_to_board('29', (-2, -1), tile.ROTATIONS.deg0)

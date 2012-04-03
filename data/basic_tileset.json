@@ -1,0 +1,3686 @@
+{
+    "tiles": {
+        "1": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "6"
+                ], 
+                [
+                    "3", 
+                    "4", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "starter", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "thief", 
+                "top": "knight", 
+                "top-left": "farmer"
+            }
+        }, 
+        "10": {
+            "connections": [
+                [
+                    "3", 
+                    "0", 
+                    "1"
+                ], 
+                [
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcity", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight"
+            }
+        }, 
+        "11": {
+            "connections": [
+                [
+                    "3", 
+                    "0", 
+                    "1"
+                ], 
+                [
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcity", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight"
+            }
+        }, 
+        "12": {
+            "connections": [
+                [
+                    "3", 
+                    "0", 
+                    "1"
+                ], 
+                [
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcity", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight"
+            }
+        }, 
+        "13": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "3"
+                ], 
+                [
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcityroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle": "knight"
+            }
+        }, 
+        "14": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "3"
+                ], 
+                [
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcityroadshielded", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle": "knight"
+            }, 
+            "shield": "top-left"
+        }, 
+        "15": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "3"
+                ], 
+                [
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcityroadshielded", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle": "knight"
+            }, 
+            "shield": "top-left"
+        }, 
+        "16": {
+            "connections": [
+                [
+                    "0", 
+                    "3"
+                ], 
+                [
+                    "1", 
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }
+        }, 
+        "17": {
+            "connections": [
+                [
+                    "0", 
+                    "3"
+                ], 
+                [
+                    "1", 
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }
+        }, 
+        "18": {
+            "connections": [
+                [
+                    "0", 
+                    "3"
+                ], 
+                [
+                    "1", 
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }
+        }, 
+        "19": {
+            "connections": [
+                [
+                    "0", 
+                    "3"
+                ], 
+                [
+                    "1", 
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityshielded", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }, 
+            "shield": "top-left"
+        }, 
+        "2": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloister", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "20": {
+            "connections": [
+                [
+                    "0", 
+                    "3"
+                ], 
+                [
+                    "1", 
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityshielded", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }, 
+            "shield": "top-left"
+        }, 
+        "21": {
+            "connections": [
+                [
+                    "0", 
+                    "7"
+                ], 
+                [
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "farmer"
+            }
+        }, 
+        "22": {
+            "connections": [
+                [
+                    "0", 
+                    "7"
+                ], 
+                [
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "farmer"
+            }
+        }, 
+        "23": {
+            "connections": [
+                [
+                    "0", 
+                    "7"
+                ], 
+                [
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "farmer"
+            }
+        }, 
+        "24": {
+            "connections": [
+                [
+                    "0", 
+                    "7"
+                ], 
+                [
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityroadshielded", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "farmer"
+            }, 
+            "shield": "top-left"
+        }, 
+        "25": {
+            "connections": [
+                [
+                    "0", 
+                    "7"
+                ], 
+                [
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcityroadshielded", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "farmer"
+            }, 
+            "shield": "top-left"
+        }, 
+        "26": {
+            "connections": [
+                [
+                    "0", 
+                    "2"
+                ], 
+                [
+                    "1", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "middlecity", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight", 
+                "top": "farmer"
+            }
+        }, 
+        "27": {
+            "connections": [
+                [
+                    "0", 
+                    "2"
+                ], 
+                [
+                    "1", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "middlecityshielded", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight", 
+                "top": "farmer"
+            }, 
+            "shield": "top-left"
+        }, 
+        "28": {
+            "connections": [
+                [
+                    "0", 
+                    "2"
+                ], 
+                [
+                    "1", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "middlecityshielded", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight", 
+                "top": "farmer"
+            }, 
+            "shield": "top-left"
+        }, 
+        "29": {
+            "connections": [
+                [
+                    "1", 
+                    "2"
+                ], 
+                [
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcornercity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }
+        }, 
+        "3": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloister", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "30": {
+            "connections": [
+                [
+                    "1", 
+                    "2"
+                ], 
+                [
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topleftcornercity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top-left": "knight"
+            }
+        }, 
+        "31": {
+            "connections": [
+                [
+                    "1", 
+                    "3"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "city"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topbottomcity", 
+            "positions": {
+                "bottom": "knight", 
+                "middle": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "32": {
+            "connections": [
+                [
+                    "1", 
+                    "3"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "city"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topbottomcity", 
+            "positions": {
+                "bottom": "knight", 
+                "middle": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "33": {
+            "connections": [
+                [
+                    "1", 
+                    "3"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "city"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topbottomcity", 
+            "positions": {
+                "bottom": "knight", 
+                "middle": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "34": {
+            "connections": [
+                [
+                    "1", 
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "35": {
+            "connections": [
+                [
+                    "1", 
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "36": {
+            "connections": [
+                [
+                    "1", 
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "37": {
+            "connections": [
+                [
+                    "1", 
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "38": {
+            "connections": [
+                [
+                    "1", 
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "0"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecity", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "39": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5", 
+                    "4"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnleft", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "4": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloister", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "40": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5", 
+                    "4"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnleft", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "41": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5", 
+                    "4"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnleft", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "42": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "7", 
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnright", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "43": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "7", 
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnright", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "44": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "7", 
+                    "1", 
+                    "4"
+                ], 
+                [
+                    "2", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadturnright", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "top": "knight"
+            }
+        }, 
+        "45": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "4", 
+                    "9"
+                ], 
+                [
+                    "1", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecitycrossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "knight"
+            }
+        }, 
+        "46": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "4", 
+                    "9"
+                ], 
+                [
+                    "1", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecitycrossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "knight"
+            }
+        }, 
+        "47": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "4", 
+                    "9"
+                ], 
+                [
+                    "1", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecitycrossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "knight"
+            }
+        }, 
+        "48": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "6"
+                ], 
+                [
+                    "3", 
+                    "4", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadmiddle", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "thief", 
+                "top": "knight"
+            }
+        }, 
+        "49": {
+            "connections": [
+                [
+                    "0"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "6"
+                ], 
+                [
+                    "3", 
+                    "4", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "toponeedgecityroadmiddle", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "thief", 
+                "top": "knight"
+            }
+        }, 
+        "5": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloister", 
+            "positions": {
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "50": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "51": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "52": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "53": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "54": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "55": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "56": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "57": {
+            "connections": [
+                [
+                    "0", 
+                    "7", 
+                    "4"
+                ], 
+                [
+                    "1", 
+                    "5"
+                ], 
+                [
+                    "2", 
+                    "3", 
+                    "6"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "topmiddlebottomroad", 
+            "positions": {
+                "middle": "thief", 
+                "middle-left": "farmer", 
+                "middle-right": "farmer"
+            }
+        }, 
+        "58": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "59": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "6": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "5", 
+                    "2", 
+                    "4"
+                ], 
+                [
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloisterroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "60": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "61": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "62": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "63": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "64": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "65": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "66": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "4", 
+                    "5"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "2", 
+                    "7"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5", 
+                        "6", 
+                        "7"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "leftturnroad", 
+            "positions": {
+                "bottom-left": "farmer", 
+                "middle": "thief", 
+                "top-right": "farmer"
+            }
+        }, 
+        "67": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "7"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "9", 
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "crossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "farmer"
+            }
+        }, 
+        "68": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "7"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "9", 
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "crossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "farmer"
+            }
+        }, 
+        "69": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "7"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "9", 
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "crossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "farmer"
+            }
+        }, 
+        "7": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "5", 
+                    "2", 
+                    "4"
+                ], 
+                [
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2", 
+                        "3", 
+                        "4"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "5"
+                    ], 
+                    "type": "field"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "field"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "cloisterroad", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-right": "farmer", 
+                "middle": "monk"
+            }
+        }, 
+        "70": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "7"
+                ], 
+                [
+                    "2"
+                ], 
+                [
+                    "5"
+                ], 
+                [
+                    "8"
+                ], 
+                [
+                    "3", 
+                    "6"
+                ], 
+                [
+                    "9", 
+                    "4"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "4", 
+                        "5", 
+                        "6"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "7", 
+                        "8", 
+                        "9"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "1", 
+                        "2", 
+                        "3"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "field"
+                }
+            }, 
+            "name": "crossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "farmer"
+            }
+        }, 
+        "71": {
+            "connections": [
+                [
+                    "1"
+                ], 
+                [
+                    "4"
+                ], 
+                [
+                    "7"
+                ], 
+                [
+                    "10"
+                ], 
+                [
+                    "2", 
+                    "3"
+                ], 
+                [
+                    "5", 
+                    "8"
+                ], 
+                [
+                    "6", 
+                    "11"
+                ], 
+                [
+                    "0", 
+                    "9"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "6", 
+                        "7", 
+                        "8"
+                    ], 
+                    "type": "road"
+                }, 
+                "left": {
+                    "connections": [
+                        "9", 
+                        "10", 
+                        "11"
+                    ], 
+                    "type": "road"
+                }, 
+                "right": {
+                    "connections": [
+                        "3", 
+                        "4", 
+                        "5"
+                    ], 
+                    "type": "road"
+                }, 
+                "top": {
+                    "connections": [
+                        "0", 
+                        "1", 
+                        "2"
+                    ], 
+                    "type": "road"
+                }
+            }, 
+            "name": "allcrossroads", 
+            "positions": {
+                "bottom": "thief", 
+                "bottom-left": "farmer", 
+                "bottom-right": "farmer", 
+                "middle-left": "thief", 
+                "middle-right": "thief", 
+                "top": "thief", 
+                "top-left": "farmer", 
+                "top-right": "farmer"
+            }
+        }, 
+        "8": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "city"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "allcity", 
+            "positions": {
+                "middle": "knight"
+            }, 
+            "shield": "top-left"
+        }, 
+        "9": {
+            "connections": [
+                [
+                    "0", 
+                    "1", 
+                    "3"
+                ], 
+                [
+                    "2"
+                ]
+            ], 
+            "edges": {
+                "bottom": {
+                    "connections": [
+                        "2"
+                    ], 
+                    "type": "field"
+                }, 
+                "left": {
+                    "connections": [
+                        "3"
+                    ], 
+                    "type": "city"
+                }, 
+                "right": {
+                    "connections": [
+                        "1"
+                    ], 
+                    "type": "city"
+                }, 
+                "top": {
+                    "connections": [
+                        "0"
+                    ], 
+                    "type": "city"
+                }
+            }, 
+            "name": "topcityshielded", 
+            "positions": {
+                "bottom": "farmer", 
+                "middle": "knight"
+            }
+        }
+    }
+}

@@ -12,9 +12,9 @@ class UnsupportedOperationException(Exception):
     pass
 
 class Enum(object):
-    reverse = {}
 
     def __init__(self, *args, **kwargs):
+        self.reverse = {}
         for i in xrange(0, len(args)):
             setattr(self, args[i], i)
             self.reverse[i] = args[i]
@@ -91,48 +91,56 @@ def validate_tileset_config(json, valid_roles, valid_environments):
     assert json is not None
     assert valid_roles is not None and type(valid_roles) == set
 
-    assert 'base_tiles' in json, '"base_tiles" not in tileset'
     assert 'tiles' in json, '"tiles" not in tileset'
 
-    for name, basetile in json['base_tiles'].items():
-        logging.debug("Validating basetile %s" % (name)) 
-        assert 'positions' in basetile or 'inherits' in basetile, 'Error in basetile: %s' % (basetile)
-        assert 'edges' in basetile or 'inherits' in basetile, 'Error in basetile: %s' % (basetile)
-        assert 'fieldsets' in basetile or 'inherits' in basetile, 'Error in basetile: %s' % (basetile)
+    for number, tile in json['tiles'].items():
+        assert 'name' in tile
+        logging.debug("Validating tile %s, name: %s" % (number, tile['name']))
 
-        if 'positions' in basetile:
-            assert type(basetile['positions'] == dict), 'Error with positions in basetile: %s' % (basetile)
+        assert 'positions' in tile, 'Error in tile: %s' % (tile)
+        assert 'edges' in tile, 'Error in tile: %s' % (tile)
+        assert 'connections' in tile, 'Error in tile: %s' % (tile)
 
-            for pos, role in basetile['positions'] .items():
-                assert role in valid_roles, 'Invalid role in basetile: %s' % (basetile)
-                assert pos in VALID_POSITIONS, 'Error with valid positions in basetile: %s' % (basetile)
+        assert 'positions' in tile, 'Missing positions in tile: %s' % (tile)
+        assert type(tile['positions'] == dict), 'Error with positions in tile: %s' % (tile)
 
-        if 'edges' in basetile:
-            assert type(basetile['edges'] == dict), 'Error with edges in basetile: %s' % (basetile)
-            if "inherits" not in basetile:
-                assert len(basetile['edges']) == 4, 'Error with amount of edges in basetile: %s' % (basetile)
-            for edge, value in basetile['edges'].items():
-                assert edge in VALID_EDGES, 'Error with edge loations in basetile: %s' % (basetile)
-                assert value in valid_environments, 'Error with edge environment type in basetile: %s' % (basetile)
+        for pos, role in tile['positions'] .items():
+            assert role in valid_roles, 'Invalid role in tile: %s' % (tile)
+            assert pos in VALID_POSITIONS, 'Error with valid positions in tile: %s' % (tile)
 
-        if 'fieldsets' in basetile:
-            assert type(basetile['fieldsets'] == list), 'Error with fieldsets in basetile: %s' % (basetile)
+        cset = set()
+        assert 'edges' in tile, 'Missing edges in tile: %s' % (tile)
+        assert type(tile['edges'] == dict), 'Error with edges in tile: %s' % (tile)
+        for edge, value in tile['edges'].items():
+            assert edge in VALID_EDGES, 'Error with edge loations in tile: %s' % (tile)
+            assert 'type' in value, 'Error with edge type in tile: %s' % (tile)
+            assert value['type'] in valid_environments, 'Error with edge environment type in tile: %s' % (tile)
 
-            if len(basetile['fieldsets']) > 0:
-                assert type(basetile['fieldsets'][0] == list), 'Error with fieldsets in basetile: %s' % (basetile)
-                for fset in basetile['fieldsets']:
-                    for corner in fset:
-                        assert corner in VALID_POSITIONS, 'Error with corner values in fieldsets in basetile: %s' % (basetile)
+            assert 'connections' in value, 'Error with connections with edge in tile: %s' % (tile)
+            connections = value['connections']
+            assert type(connections) == list, 'Error with connections with edge in tile: %s' % (tile)
+            assert len(connections) > 0, 'Error with connections with edge in tile: %s' % (tile)
+            for c in connections:
+                assert type(c) == str, 'Error with connections with edge in tile: %s' % (tile)
+                cset.add(c)
 
-        if 'shield' in basetile:
-            if len(basetile['shield']) > 0:
-                assert basetile['shield'] in VALID_POSITIONS, 'Error with shield in basetile: %s' % (basetile)
+        total_cset = set()
+        assert 'connections' in tile, 'Missing connections in tile: %s' % (tile)
+        assert type(tile['connections'] == list), 'Error with connections in tile: %s' % (tile)
 
-    numbers = []
-    for number, name in json['tiles'].items():
-        assert name in json['base_tiles'], "Tile name missing from basetiles: %s" % (name)
-        numbers.append(number)
+        assert type(tile['connections'][0] == list), 'Error with connections in tile: %s' % (tile)
+        for c in tile['connections']:
+            for num in c:
+                assert int(num) >= 0, 'Error with values in connections in tile: %s' % (tile)
+                assert num in cset, 'Error with values in connections in tile: %s, does not exist in any edge' % (tile)
+                total_cset.add(num)
 
+        assert total_cset == cset, 'Error with connections, mismatch, in tile: %s' % (tile)
+
+        if 'shield' in tile:
+            assert tile['shield'] in VALID_POSITIONS, 'Error with shield in tile: %s' % (tile)
+
+    numbers = [number for number, _ in json['tiles'].items()]
     numbers = sorted(numbers, cmp=numeric_compare)
     for i in xrange(0, len(numbers) - 1):
         assert (int(numbers[i+1]) - int(numbers[i])) == 1, "Error in tile numbering at tile #%d" % (i)

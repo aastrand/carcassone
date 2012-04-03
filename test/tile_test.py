@@ -15,89 +15,178 @@ class TileTest(unittest.TestCase):
                                     "middle": "farmer"
                                 },
                                 "edges": {
-                                    "top": "field",
-                                    "bottom": "field",
-                                    "left": "field",
-                                    "right": "field"
+                                    "top": {"type": "field"},
+                                    "bottom": {"type": "field"},
+                                    "left": {"type": "field"},
+                                    "right": {"type": "field"}
                                 },
-                                "fieldsets": [
-                                    [
-                                        "top-left",
-                                        "top-right",
-                                        "bottom-left",
-                                        "bottom-right"
-                                    ]
-                                ],
                                "shield": "top-left"
                             }
 
         self.topcityroad = {
-                                "inherits": "topcity",
-                                "positions": {
-                                    "top": "knight",
-                                    "bottom": "thief",
-                                    "bottom-left": "farmer",
-                                    "bottom-right": "farmer",
-                                },
-                                "edges": {
-                                    "bottom": "road"
-                                },
-                                "fieldsets": [
+                                "connections": [
                                     [
-                                        "bottom-left"
-                                    ],
+                                        "0", 
+                                        "1", 
+                                        "5"
+                                    ], 
                                     [
-                                        "bottom-right"
+                                        "2"
+                                    ], 
+                                    [
+                                        "3"
+                                    ], 
+                                    [
+                                        "4"
                                     ]
-                                ]
+                                ], 
+                                "edges": {
+                                    "bottom": {
+                                        "connections": [
+                                            "2", 
+                                            "3", 
+                                            "4"
+                                        ], 
+                                        "type": "road"
+                                    }, 
+                                    "left": {
+                                        "connections": [
+                                            "5"
+                                        ], 
+                                        "type": "city"
+                                    }, 
+                                    "right": {
+                                        "connections": [
+                                            "1"
+                                        ], 
+                                        "type": "city"
+                                    }, 
+                                    "top": {
+                                        "connections": [
+                                            "0"
+                                        ], 
+                                        "type": "city"
+                                    }
+                                }, 
+                                "name": "topcityroad", 
+                                "positions": {
+                                    "bottom": "thief", 
+                                    "bottom-left": "farmer", 
+                                    "bottom-right": "farmer", 
+                                    "middle": "knight"
+                                }
                             }
 
         self.topcity = {
-                                "positions": {
-                                    "top": "knight",
-                                    "bottom": "farmer"
-                                },
-                                "edges": {
-                                    "top": "city",
-                                    "bottom": "field",
-                                    "left": "city",
-                                    "right": "city"
-                                },
-                                "shield": "",
-                                "fieldsets": [
+                                "connections": [
                                     [
-                                        "bottom-left", "bottom-right"
+                                        "3", 
+                                        "0", 
+                                        "1"
+                                    ], 
+                                    [
+                                        "2"
                                     ]
-                                ]
+                                ], 
+                                "edges": {
+                                    "bottom": {
+                                        "connections": [
+                                            "2"
+                                        ], 
+                                        "type": "field"
+                                    }, 
+                                    "left": {
+                                        "connections": [
+                                            "3"
+                                        ], 
+                                        "type": "city"
+                                    }, 
+                                    "right": {
+                                        "connections": [
+                                            "1"
+                                        ], 
+                                        "type": "city"
+                                    }, 
+                                    "top": {
+                                        "connections": [
+                                            "0"
+                                        ], 
+                                        "type": "city"
+                                    }
+                                }, 
+                                "name": "topcity", 
+                                "positions": {
+                                    "bottom": "farmer", 
+                                    "middle": "knight"
+                                }
                             }
 
         self.crossroads = {
-                                "positions": {
-                                    "top": "farmer",
-                                    "left": "thief",
-                                    "right": "thief",
-                                    "bottom": "thief",
-                                    "bottom-right": "farmer",
-                                    "bottom-left": "farmer"
-                                },
-                                "edges": {
-                                    "top": "field",
-                                    "left": "road",
-                                    "right": "road",
-                                    "bottom": "road"
-                                },
-                                "fieldsets": [
+                                "connections": [
                                     [
-                                        "top-left",
-                                        "top-right"
-                                    ],
+                                        "0", 
+                                        "1", 
+                                        "7"
+                                    ], 
                                     [
-                                        "bottom-right"
-                                    ],
+                                        "2"
+                                    ], 
                                     [
-                                        "bottom-left"
+                                        "5"
+                                    ], 
+                                    [
+                                        "8"
+                                    ], 
+                                    [
+                                        "3", 
+                                        "6"
+                                    ], 
+                                    [
+                                        "9", 
+                                        "4"
                                     ]
-                                ]
+                                ], 
+                                "edges": {
+                                    "bottom": {
+                                        "connections": [
+                                            "4", 
+                                            "5", 
+                                            "6"
+                                        ], 
+                                        "type": "road"
+                                    }, 
+                                    "left": {
+                                        "connections": [
+                                            "7", 
+                                            "8", 
+                                            "9"
+                                        ], 
+                                        "type": "road"
+                                    }, 
+                                    "right": {
+                                        "connections": [
+                                            "1", 
+                                            "2", 
+                                            "3"
+                                        ], 
+                                        "type": "road"
+                                    }, 
+                                    "top": {
+                                        "connections": [
+                                            "0"
+                                        ], 
+                                        "type": "field"
+                                    }
+                                }, 
+                                "name": "crossroads", 
+                                "positions": {
+                                    "bottom": "thief", 
+                                    "bottom-left": "farmer", 
+                                    "bottom-right": "farmer", 
+                                    "middle-left": "thief", 
+                                    "middle-right": "thief", 
+                                    "top": "farmer"
+                                }
                             }
 
     def test_tile_instantiation(self):
@@ -108,25 +197,17 @@ class TileTest(unittest.TestCase):
         self.assertEquals(len(t.positions), 1)
         self.assertEquals(t.positions[0], ('middle', 'farmer'))
 
-        self.assertEquals(len(t.fields), 1)
-        self.assertEquals(t.fields[0], set([3, 2, 1, 0]))
-
         self.assertEquals(t.shield, "top-left")
 
-    def test_tile_fieldsets(self):
         t = tile.Tile('topcityroad', self.topcityroad)
 
-        self.assertEquals(t.edges, ['', '', 2, ''], 'Bottom edge should be road')
+        self.assertEquals(t.edges, [1, 1, 2, 1], 'Bottom edge should be road')
 
         self.assertEquals(len(t.positions), 4)
-        self.assertTrue(('top', 'knight') in t.positions)
+        self.assertTrue(('middle', 'knight') in t.positions)
         self.assertTrue(('bottom', 'thief') in t.positions)
         self.assertTrue(('bottom-right', 'farmer') in t.positions)
         self.assertTrue(('bottom-left', 'farmer') in t.positions)
-
-        self.assertEquals(len(t.fields), 2)
-        self.assertTrue(set([2]) in t.fields)
-        self.assertTrue(set([3]) in t.fields)
 
         self.assertEquals(t.shield, None)
 

@@ -88,6 +88,8 @@ def main():
                 most_playable = count
                 location = l
 
+        #location = random.sample(playable_locations, 1)[0]
+
         for r in ROTATIONS.values():
             if b.is_legal_on_location(tile, location, ROTATIONS[r]):
                 b.add_to_board(tile, location, ROTATIONS[r])

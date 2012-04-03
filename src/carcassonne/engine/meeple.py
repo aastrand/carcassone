@@ -6,4 +6,4 @@ Created on Mar 31, 2012
 
 from carcassonne.engine.util import Enum
 
-MEEPLES = Enum('red', 'blue', 'green', 'yellow', 'green')
+MEEPLES = Enum('red', 'blue', 'green', 'yellow', 'black')

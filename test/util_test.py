@@ -43,7 +43,7 @@ class UtilTest(unittest.TestCase):
             pass
 
     def test_validate(self):
-        json = load_config('data/vanilla_tileset.json')
+        json = load_config('data/basic_tileset.json')
         util.validate_tileset_config(json,
                                      set(['thief', 'knight', 'monk', 'farmer']),
                                      set(['city', 'field', 'road']))
