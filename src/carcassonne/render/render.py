@@ -3,9 +3,22 @@ Created on Mar 31, 2012
 
 @author: anders
 '''
+import math
+
 from carcassonne.engine.tile import ROTATIONS
 
 class Renderer(object):
+    tile_width = 88
+    tile_height = 86
+
+    offset = int(tile_width*0.1)
+
+    base_pos_to_coord = {'top': offset,
+                         'middle': tile_height / 2,
+                         'bottom': tile_height - offset,
+                         'left': offset,
+                         'right': tile_width - offset}
+
     @staticmethod
     def render():
         raise NotImplementedError()
@@ -17,9 +30,40 @@ class Renderer(object):
     @staticmethod
     def table_pos_to_grid(column, row, board):
         topleft, bottomright = board.extremes()
-        c = column + topleft[0]
-        r = topleft[1] - row
+        c = column + topleft[0] + 1
+        r = topleft[1] - row - 1
         return c, r
+
+    @staticmethod
+    def pos_to_tile_xy(pos, rotation):
+        x = int(float(pos['x']) / 100.0 *  float(Renderer.tile_width)) 
+        y = int(float(pos['y']) / 100.0 * float(Renderer.tile_height)) 
+
+        rot = ROTATIONS.by_ordinal(rotation)
+        angle = int(rot[3:])
+        x, y = Renderer.rotate(x, y, angle)
+
+        return x, y
+
+    @staticmethod
+    def rotate(x, y, angle):
+        assert type(x) == int
+        assert type(y) == int
+        assert type(angle) == int
+
+        if angle == 0:
+            return x, y
+
+        r = math.radians(angle)
+        # normalize
+        x_n = float(x - Renderer.tile_width/2)
+        y_n = float(y - Renderer.tile_height/2)
+
+        x_new = abs(int(x_n * math.cos(r) - y_n * math.sin(r)) + Renderer.tile_width/2)
+        y_new = abs(int(x_n * math.sin(r) + y_n * math.cos(r)) + Renderer.tile_height/2)
+
+        return x_new, y_new
+
 
 class HtmlRenderer(Renderer):
     @staticmethod
@@ -60,23 +104,15 @@ $(window).load(function(){
 
         rowtexts = []
         for r in xrange(0,rows+1):
-            row = []
-
             for c in xrange(0,cols+1):
                 cg, rg = HtmlRenderer.table_pos_to_grid(c, r, board)
                 tile = board.grid.get((cg, rg))
 
                 if tile:
-                    rowtext = '<td><img src="data/images/%s.png" id="%s"></td>' % (tile.tile.name,
-                                                                                   HtmlRenderer.tile_to_id(tile))
-                else:
-                    rowtext = '<td></td>' 
+                    #for pos in tile.tile.positions:
+                    for pos in tile.tile.positions:
+                        x, y = Renderer.pos_to_tile_xy(pos, tile.rotation)
+                        rowtexts.append('<div style="position: fixed; top: %dpx; left: %dpx; width: 1x; height: 1px; z-index:200"><img src="data/images/thief.png"></div>' % (y-8+((r)*Renderer.tile_width), (x-8+((c)*Renderer.tile_height))))
+                    rowtexts.append('<div style="position: fixed; top: %dpx; left: %dpx; width: 90x; height: 90px; z-index:100"><img src="data/images/%s.png" id="%s"></div>' % ((r)*Renderer.tile_width, (c)*Renderer.tile_height, tile.tile.name, HtmlRenderer.tile_to_id(tile)))
 
-                row.append(rowtext)
-
-            rowtexts.append('<tr>%s</tr>' % ('\n'.join(row)))
-
-        table = '<table border="0">\n%s\n</table>' % ('\n'.join(rowtexts))
-
-        return "<body>\n%s\n%s\n</body>" % (js, table)
-
+        return "<body>\n%s\n%s\n</body>" % (js, '\n'.join(rowtexts))

@@ -18,10 +18,14 @@ class TileConfigException(Exception):
 
 class Tile(object):
 
-    def __init__(self, name, config):
+    def __init__(self, id, name, config):
+        self.id = id
         self.name = name
         self.positions = []
         self.edges = ['']*4
+        self.edge_to_connections = {}
+        self.connection_to_type = {}
+        self.connections = []
 
         self.shield = None
 
@@ -29,23 +33,36 @@ class Tile(object):
 
     def _setup(self, config):
         # Positions for meeples
-        assert 'positions' in config
-        self._setup_positions(config['positions'])
+        assert 'connections' in config
+        self._setup_connections(config['connections'])
         assert 'edges' in config
         self._setup_edges(config['edges'])
-        # TODO: connections goes here
+        assert 'positions' in config
+        self._setup_positions(config['positions'])
 
         # And respect shielded, value = position index
         if 'shield' in config:
-            self.shield = config['shield'] if len(config['shield']) > 0 else None  
+            self.shield = config['shield']
 
-    def _setup_positions(self, position_config):
-        for position, value in position_config.items():
-            self.positions.append((position,value))
+    def _setup_connections(self, connection_config):
+        for connections in connection_config:
+            c = []
+            self.connections.append(c)
+            for conn in connections:
+                c.append(conn)
 
     def _setup_edges(self, edge_config):
         for edge, value in edge_config.items():
             self.edges[EDGES[edge]] = MATERIALS[value['type']]
+            self.edge_to_connections[EDGES[edge]] = value['connections']
+
+    def _setup_positions(self, position_config):
+        for position in position_config:
+            self.positions.append(position)
+            if 'connection' in position:
+                for c in self.connections:
+                    if c == position['connection']:
+                        self.connection_to_type[position['connection']] = c 
 
     def __repr__(self):
         return "%s:\nedges: %s\npositions: %s\nshielded: %s\n" % (
@@ -61,3 +78,6 @@ class Tile(object):
 
     def get_edge(self, edge, rotation):
         return self.edges[(edge - rotation) % 4]
+
+    def unique_connection(self, connection):
+        return '%s-%s' % (self.id, connection)

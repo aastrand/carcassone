@@ -11,16 +11,51 @@ class TileTest(unittest.TestCase):
 
     def setUp(self):
         self.allgrass_tile = {
-                                "positions": {
-                                    "middle": "farmer"
-                                },
+                                "connections": [
+                                    [
+                                        "0", 
+                                        "1", 
+                                        "2", 
+                                        "3"
+                                    ]
+                                ], 
                                 "edges": {
-                                    "top": {"type": "field"},
-                                    "bottom": {"type": "field"},
-                                    "left": {"type": "field"},
-                                    "right": {"type": "field"}
-                                },
-                               "shield": "top-left"
+                                    "bottom": {
+                                        "connections": [
+                                            "2"
+                                        ], 
+                                        "type": "field"
+                                    }, 
+                                    "left": {
+                                        "connections": [
+                                            "3"
+                                        ], 
+                                        "type": "field"
+                                    }, 
+                                    "right": {
+                                        "connections": [
+                                            "1"
+                                        ], 
+                                        "type": "field"
+                                    }, 
+                                    "top": {
+                                        "connections": [
+                                            "0"
+                                        ], 
+                                        "type": "field"
+                                    }
+                                }, 
+                                "positions": [
+                                    {
+                                        "connection": "0", 
+                                        "x": 90, 
+                                        "y": 90
+                                    },
+                                    {
+                                        "x": 50, 
+                                        "y": 50
+                                    }
+                                ]
                             }
 
         self.topcityroad = {
@@ -68,13 +103,28 @@ class TileTest(unittest.TestCase):
                                         "type": "city"
                                     }
                                 }, 
-                                "name": "topcityroad", 
-                                "positions": {
-                                    "bottom": "thief", 
-                                    "bottom-left": "farmer", 
-                                    "bottom-right": "farmer", 
-                                    "middle": "knight"
-                                }
+                                "positions": [
+                                    {
+                                        "connection": "0", 
+                                        "x": 48, 
+                                        "y": 50
+                                    }, 
+                                    {
+                                        "connection": "4", 
+                                        "x": 90, 
+                                        "y": 90
+                                    }, 
+                                    {
+                                        "connection": "2", 
+                                        "x": 9, 
+                                        "y": 90
+                                    }, 
+                                    {
+                                        "connection": "3", 
+                                        "x": 48, 
+                                        "y": 90
+                                    }
+                                ]
                             }
 
         self.topcity = {
@@ -114,15 +164,22 @@ class TileTest(unittest.TestCase):
                                         "type": "city"
                                     }
                                 }, 
-                                "name": "topcity", 
-                                "positions": {
-                                    "bottom": "farmer", 
-                                    "middle": "knight"
-                                }
+                                "positions": [
+                                    {
+                                        "connection": "3", 
+                                        "x": 48, 
+                                        "y": 50
+                                    }, 
+                                    {
+                                        "connection": "2", 
+                                        "x": 48, 
+                                        "y": 90
+                                    }
+                                ]
                             }
 
         self.crossroads = {
-                                "connections": [
+                               "connections": [
                                     [
                                         "0", 
                                         "1", 
@@ -178,44 +235,62 @@ class TileTest(unittest.TestCase):
                                         "type": "field"
                                     }
                                 }, 
-                                "name": "crossroads", 
-                                "positions": {
-                                    "bottom": "thief", 
-                                    "bottom-left": "farmer", 
-                                    "bottom-right": "farmer", 
-                                    "middle-left": "thief", 
-                                    "middle-right": "thief", 
-                                    "top": "farmer"
-                                }
+                                "positions": [
+                                    {
+                                        "connection": "5", 
+                                        "x": 48, 
+                                        "y": 90
+                                    }, 
+                                    {
+                                        "connection": "0", 
+                                        "x": 48, 
+                                        "y": 9
+                                    }, 
+                                    {
+                                        "connection": "2", 
+                                        "x": 90, 
+                                        "y": 50
+                                    }, 
+                                    {
+                                        "connection": "6", 
+                                        "x": 90, 
+                                        "y": 90
+                                    }, 
+                                    {
+                                        "connection": "4", 
+                                        "x": 9, 
+                                        "y": 90
+                                    }, 
+                                    {
+                                        "connection": "7", 
+                                        "x": 9, 
+                                        "y": 50
+                                    }
+                                ]
                             }
 
     def test_tile_instantiation(self):
-        t = tile.Tile('grass', self.allgrass_tile)
+        t = tile.Tile('1', 'grass', self.allgrass_tile)
 
         self.assertEquals(t.edges, [0, 0, 0, 0], 'All edges should be fields')
 
-        self.assertEquals(len(t.positions), 1)
-        self.assertEquals(t.positions[0], ('middle', 'farmer'))
+        self.assertEquals(len(t.positions), 2)
+        self.assertEquals(t.positions[0], {'y': 90, 'x': 90, 'connection': '0'})
+        self.assertEquals(t.positions[1], {'y': 50, 'x': 50})
 
-        self.assertEquals(t.shield, "top-left")
-
-        t = tile.Tile('topcityroad', self.topcityroad)
+        t = tile.Tile('1', 'topcityroad', self.topcityroad)
 
         self.assertEquals(t.edges, [1, 1, 2, 1], 'Bottom edge should be road')
 
         self.assertEquals(len(t.positions), 4)
-        self.assertTrue(('middle', 'knight') in t.positions)
-        self.assertTrue(('bottom', 'thief') in t.positions)
-        self.assertTrue(('bottom-right', 'farmer') in t.positions)
-        self.assertTrue(('bottom-left', 'farmer') in t.positions)
 
         self.assertEquals(t.shield, None)
 
     def test_is_legal_adjecent_to(self):
-        city = tile.Tile('topcityroad', self.topcityroad)
-        grass = tile.Tile('grass', self.allgrass_tile)
-        topcity = tile.Tile('topcity', self.topcity)
-        crossroads = tile.Tile('crossroads', self.crossroads)
+        city = tile.Tile('1', 'topcityroad', self.topcityroad)
+        grass = tile.Tile('1', 'grass', self.allgrass_tile)
+        topcity = tile.Tile('1', 'topcity', self.topcity)
+        crossroads = tile.Tile('1', 'crossroads', self.crossroads)
 
         baseval = [False]*4*4*4
         self._all_combos(city, grass, baseval)
@@ -283,7 +358,7 @@ class TileTest(unittest.TestCase):
                     i += 1
 
     def test_get_edge(self):
-        t = tile.Tile('crossroads', self.crossroads)
+        t = tile.Tile('1', 'crossroads', self.crossroads)
         self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg0), 0)
         self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg90), 2)
         self.assertEquals(t.get_edge(tile.EDGES.top, tile.ROTATIONS.deg180), 2)

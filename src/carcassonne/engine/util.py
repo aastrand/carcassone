@@ -53,60 +53,29 @@ class Enum(object):
             yield i
 
 VALID_EDGES = set(['top', 'bottom', 'left', 'right'])
-BASE_POSITIONS = ['top-left', 'top', 'top-right', 'middle-left', 'middle', 'middle-right', 'bottom-left', 'bottom', 'bottom-right']
-
-def create_positions(base_positions, depth):
-    """ Creates all valid positions for a given subdivision depth.
-    Depth == 0 gives us the base positions defined above.
-    Depth == 1 gives us additional top-right-right, top-left-left etc etc.
-    """
-    positions = copy.deepcopy(base_positions)
-
-    for i in xrange(0, depth):
-        temp = []
-
-        # Create new subdivisions
-        for j in xrange(0, len(base_positions)):
-            for k in xrange(0, len(base_positions)):
-                temp.append("%s-%s" % (positions[j], base_positions[k]))
-
-        # Add them to the total list
-        positions.extend(temp)
-
-    return positions
-
-VALID_POSITIONS = create_positions(BASE_POSITIONS, 1)
 
 def numeric_compare(x, y):
     return int(x) - int(y)
 
-def validate_tileset_config(json, valid_roles, valid_environments):
+def validate_tileset_config(json, valid_entities):
     """ 
     Validates a json-enoded tileset
     @param json tileset
     @type json json-encoded string
-    @param valid_roles set of valid roles for positions
-    @type valid_roles set of strings
+    @param valid_entities set of valid entities for positions
+    @type valid_entities set of strings
     """
     assert json is not None
-    assert valid_roles is not None and type(valid_roles) == set
 
     assert 'tiles' in json, '"tiles" not in tileset'
+    assert 'base_tiles' in json, '"base_tiles" not in tileset'
 
-    for number, tile in json['tiles'].items():
-        assert 'name' in tile
-        logging.debug("Validating tile %s, name: %s" % (number, tile['name']))
+    for name, tile in json['base_tiles'].items():
+        logging.debug("Validating base tile: %s" % (name))
 
         assert 'positions' in tile, 'Error in tile: %s' % (tile)
         assert 'edges' in tile, 'Error in tile: %s' % (tile)
         assert 'connections' in tile, 'Error in tile: %s' % (tile)
-
-        assert 'positions' in tile, 'Missing positions in tile: %s' % (tile)
-        assert type(tile['positions'] == dict), 'Error with positions in tile: %s' % (tile)
-
-        for pos, role in tile['positions'] .items():
-            assert role in valid_roles, 'Invalid role in tile: %s' % (tile)
-            assert pos in VALID_POSITIONS, 'Error with valid positions in tile: %s' % (tile)
 
         cset = set()
         assert 'edges' in tile, 'Missing edges in tile: %s' % (tile)
@@ -114,7 +83,7 @@ def validate_tileset_config(json, valid_roles, valid_environments):
         for edge, value in tile['edges'].items():
             assert edge in VALID_EDGES, 'Error with edge loations in tile: %s' % (tile)
             assert 'type' in value, 'Error with edge type in tile: %s' % (tile)
-            assert value['type'] in valid_environments, 'Error with edge environment type in tile: %s' % (tile)
+            assert value['type'] in valid_entities, 'Error with edge entity type in tile: %s' % (tile)
 
             assert 'connections' in value, 'Error with connections with edge in tile: %s' % (tile)
             connections = value['connections']
@@ -137,8 +106,28 @@ def validate_tileset_config(json, valid_roles, valid_environments):
 
         assert total_cset == cset, 'Error with connections, mismatch, in tile: %s' % (tile)
 
+        assert 'positions' in tile, 'Missing positions in tile: %s' % (tile)
+        assert type(tile['positions'] == list), 'Error with positions in tile: %s' % (tile)
+
+        for pos in tile['positions']:
+            assert 'x' in pos, 'Error with positions, lacking x coord, in tile: %s' % (tile)
+            assert 'y' in pos, 'Error with positions, lacking y coord, in tile: %s' % (tile)
+
+            if 'connection' in pos:
+                c = pos['connection']
+                assert type(c) == str, 'Invalid connection type in tile: %s' % (tile)
+                assert c in cset, 'Invalid position, connction doesnt exist, in tile: %s' % (tile)
+    
+                x = pos['x']
+                assert type(x) == int, 'Invalid coord for position in tile: %s' % (tile)
+                assert x >= 0 and x <= 100, 'Invalid coord for position in tile: %s' % (tile)
+    
+                y = pos['y']
+                assert type(y) == int, 'Invalid coord for position in tile: %s' % (tile)
+                assert y >= 0 and y <= 100, 'Invalid coord for position in tile: %s' % (tile)
+
         if 'shield' in tile:
-            assert tile['shield'] in VALID_POSITIONS, 'Error with shield in tile: %s' % (tile)
+            assert type(tile['shield']) == bool, 'Error with shield in tile: %s' % (tile)
 
     numbers = [number for number, _ in json['tiles'].items()]
     numbers = sorted(numbers, cmp=numeric_compare)

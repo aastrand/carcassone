@@ -37,11 +37,17 @@ def main():
 
     tiles = {}
     for name, tile in j['tiles'].items():
-        if 'connections' in tile:
-            tiles[tile['name']] = tile['connections']
+        complete = True
+        for cname, c in tile['positions'].items():
+            if 'connection' in c and c['connection'] == '?':
+                complete = False
+                break
+
+        if complete:
+            tiles[tile['name']] = tile['positions']
 
     for name, tile in j['tiles'].items():
-        tile['connections'] = tiles[tile['name']]
+        tile['positions'] = tiles[tile['name']]
 
     print json.dumps(j, sort_keys=True, indent=4)
 

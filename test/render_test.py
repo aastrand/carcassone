@@ -6,6 +6,7 @@ Created on Mar 11, 2012
 import unittest
 
 import carcassonne.engine.tile as tile
+import carcassonne.engine.util as util
 
 from carcassonne.engine.board import Board, ConfigError, PlayedTile
 from carcassonne.render.render import HtmlRenderer, Renderer
@@ -29,7 +30,30 @@ class RenderTest(unittest.TestCase):
         b.add_to_board('6', (1, 0), tile.ROTATIONS.deg90)
         b.add_to_board('7', (-1, 0), tile.ROTATIONS.deg270)
         b.add_to_board('4', (2, 0), tile.ROTATIONS.deg180)
-        self.assertEquals(Renderer.table_pos_to_grid(0, 0, b), (-2, 1))
+        self.assertEquals(Renderer.table_pos_to_grid(0, 0, b), (-1, 0))
+        self.assertEquals(Renderer.table_pos_to_grid(3, 0, b), (2, 0))
+
+    def test_pos_to_tile_xy(self):
+        pos = {'x' : 20, 'y': 30}
+        x, y = Renderer.pos_to_tile_xy(pos, 0)
+        self.assertTrue(x >= 0)
+        self.assertTrue(y >= 0)
+        self.assertTrue(x <= Renderer.tile_width)
+        self.assertTrue(x <= Renderer.tile_height)
+
+    def test_rotate(self):
+        self.assertEquals(Renderer.rotate(0, 0, 0), (0, 0))
+        self.assertEquals(Renderer.rotate(0, 0, 90), (87, 1))
+        self.assertEquals(Renderer.rotate(0, 0, 180), (88, 85))
+        self.assertEquals(Renderer.rotate(0, 0, 270), (2, 87))
+        self.assertEquals(Renderer.rotate(44, 44, 0), (44, 44))
+        self.assertEquals(Renderer.rotate(44, 44, 90), (43, 43))
+        self.assertEquals(Renderer.rotate(44, 44, 180), (44, 42))
+        self.assertEquals(Renderer.rotate(44, 44, 270), (45, 43))
+        self.assertEquals(Renderer.rotate(88, 88, 0), (88, 88))
+        self.assertEquals(Renderer.rotate(88, 88, 90), (1, 87))
+        self.assertEquals(Renderer.rotate(88, 88, 180), (0, 1))
+        self.assertEquals(Renderer.rotate(88, 88, 270), (88, 1))
 
     def test_html_render(self):
         b = Board(self.conf)
@@ -39,60 +63,7 @@ class RenderTest(unittest.TestCase):
         b.add_to_board('4', (2, 0), tile.ROTATIONS.deg180)
 
         h = HtmlRenderer.render(b)
-        self.assertEquals(h, """<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>carcasonne board construction sample</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
-<script type='text/javascript'>//<![CDATA[ 
-$(window).load(function(){
-$("#cloisterroad101").rotate(90);
-$("#cloisterroad-103").rotate(270);
-$("#cloister202").rotate(180);
-});//]]>  
-</script>
-</head>
-<body>
-<script type="text/javascript" src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
-<table border="0">
-<tr><td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td></tr>
-<tr><td></td>
-<td><img src="data/images/cloisterroad.png" id="cloisterroad-103"></td>
-<td><img src="data/images/starter.png" id="starter000"></td>
-<td><img src="data/images/cloisterroad.png" id="cloisterroad101"></td>
-<td><img src="data/images/cloister.png" id="cloister202"></td>
-<td></td>
-<td></td></tr>
-<tr><td></td>
-<td></td>
-<td><img src="data/images/cloister.png" id="cloister0-10"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td></tr>
-<tr><td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td></tr>
-<tr><td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td></tr>
-</table>
-</body>
-</html>""")
+        # TODO: assert
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_setup']

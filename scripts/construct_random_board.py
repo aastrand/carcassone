@@ -40,12 +40,11 @@ def main():
     print "Loading ..."
     json = load_config(sys.argv[1])
 
-    validate_tileset_config(json, set(['thief', 'knight', 'monk', 'farmer']),
-                            set(['city', 'field', 'road']))
+    validate_tileset_config(json, set(['city', 'field', 'road']))
 
 
     seed = int(time.time())
-    #seed = 1333213878
+    seed = 1333213878
     print "Constructing with seed %s ..." % (seed)
 
     random.seed(seed)

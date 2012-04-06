@@ -24,9 +24,10 @@ class BoardTest(unittest.TestCase):
             self.assertTrue(len(t.tile.positions) > 0, "Every tile has at least one position: %s" % (t))
 
             posset = set()
-            for pos, _ in t.tile.positions:
-                self.assertTrue(pos not in posset, "Multuple positions for same rol in tile %s" % (t))
-                posset.add(pos)
+            for pos in t.tile.positions:
+                if 'connection' in pos:
+                    self.assertTrue(pos['connection'] not in posset, "Muliple positions for same rol in tile %s" % (t))
+                    posset.add(pos['connection'])
 
     def test_add_to_board(self):
         b = Board(self.conf)
@@ -173,6 +174,12 @@ class BoardTest(unittest.TestCase):
 
         # no playable positions for the cloister now:
         self.assertEquals(b.playable_locations('2'), set())
+
+    def test_initial_entities(self):
+        b = Board(self.conf)
+        self.assertEquals(b.entities['city'], [[('1', '0')]])
+        self.assertEquals(b.entities['road'], [[('1', '2')]])
+        self.assertEquals(b.entities['field'], [[('1', '5')], [('1', '4')]])
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_setup']

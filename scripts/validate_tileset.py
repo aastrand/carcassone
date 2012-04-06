@@ -15,8 +15,7 @@ def main():
 
     json = load_config(sys.argv[1])
 
-    validate_tileset_config(json, set(['thief', 'knight', 'monk', 'farmer']),
-                            set(['city', 'field', 'road']))
+    validate_tileset_config(json, set(['city', 'field', 'road']))
 
     sys.stdout.write('File %s is a valid tileset.\n' % (sys.argv[1]))
 

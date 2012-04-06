@@ -33,8 +33,7 @@ def main():
 
     conf = load_config(sys.argv[1])
 
-    validate_tileset_config(conf, set(['thief', 'knight', 'monk', 'farmer']),
-                            set(['city', 'field', 'road']))
+    validate_tileset_config(conf, set(['city', 'field', 'road']))
 
 
     

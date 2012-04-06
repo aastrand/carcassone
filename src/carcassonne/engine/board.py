@@ -40,21 +40,21 @@ def relative_pos_to_edge(location1, location2):
 class Board(object):
     def __init__(self, config):
         self.config = config
-        self._setup_tiles(config['tiles'])
+        self.entities = {}
+        self._setup_tiles(config['base_tiles'], config['tiles'])
 
-    def _setup_tiles(self, tiles):
+    def _setup_tiles(self, base_tiles, tiles):
         self.boardtiles = {}
         self.grid = {}
         self.tilesleft = set()
         self.reverse = {}
         self.edges = set()
 
-        tileset = [(tid, tile) for tid, tile in tiles.items()]
+        tileset = [(tid, tilename) for tid, tilename in tiles.items()]
         tileset = sorted(tileset, cmp=compare_tileset)
 
-        for tid, tile in tileset:
-            name = tile['name']
-            self.boardtiles[tid] = PlayedTile(Tile(name, tile), [])
+        for tid, name in tileset:
+            self.boardtiles[tid] = PlayedTile(Tile(tid, name, base_tiles[name]), [])
             self.reverse.setdefault(name, []).append(self.boardtiles[tid])
             self.tilesleft.add(tid)
 
@@ -109,12 +109,6 @@ class Board(object):
         # Add ourself, set values
         self._play_tile(tid, location, rotation)
 
-        tile = self.boardtiles[tid]
-        # Second pass, add ourself as neighbours!
-        for n in self.neighbours_for(location):
-            if type(n) is PlayedTile:
-                n.neighbours.append(tile)
-
     def playable_locations(self, for_tile=None):
         # if not for a specific tile, return the whole set
         if not for_tile:
@@ -129,19 +123,50 @@ class Board(object):
             return locations
 
     def _play_tile(self, tid, location, rotation):
+        # remove location from playable locations
         if location in self.edges:
             self.edges.remove(location)
 
+        # set actual values in the tile
         tile = self.boardtiles[tid]
         tile.location = location
         tile.rotation = rotation
         self.grid[location] = tile
         self.tilesleft.remove(tid)
 
+        # keep track of playable locations
         for n in self.neighbours_for(location):
             # add all neighbours that aren't played tiles == empty locations
             if type(n) is not PlayedTile:
                 self.edges.add(n)
+
+        tile = self.boardtiles[tid]
+        # second pass, add ourself as neighbours!
+        neighbours = self.neighbours_for(location)
+
+        has_neighbours = False
+        for n in neighbours:
+            if type(n) is PlayedTile:
+                tile.neighbours.append(n)
+                n.neighbours.append(tile)
+                has_neighbours = True
+
+        # add to global entities
+        # if there are no neighbours, create entities
+#        if not has_neighbours:
+#            for pos in tile.tile.positions:
+#                assert pos[1] in ROLE_TO_ENTITY
+#                entity_type = ROLE_TO_ENTITY[pos[1]]
+#                entities_of_type = self.entities.setdefault(entity_type, [])
+#                entity = []
+#                if pos in tile.tile.position_to_connection:
+#                    entity.append((tile.tile.id, tile.tile.position_to_connection[pos]))
+#                    entities_of_type.append(entity)
+#        else:
+#            # else merge with existing or create new
+#            for n in neighbours:
+#                if type(n) is PlayedTile:
+#                    pass
 
         logging.info("Played tile %s at location %s, rotated %s" % (tid, location, rotation))
 
