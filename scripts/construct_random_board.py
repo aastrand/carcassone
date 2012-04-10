@@ -44,7 +44,7 @@ def main():
 
 
     seed = int(time.time())
-    seed = 1333213878
+    #seed = 1333213878
     print "Constructing with seed %s ..." % (seed)
 
     random.seed(seed)

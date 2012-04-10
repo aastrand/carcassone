@@ -22,11 +22,16 @@ class PlayedTile(object):
         self.assigned_to = ""
 
     def __repr__(self):
-        return "Location: %s\nRotation: %s\nNeighbours: %s\nTile: %s" % (
-                self.location, self.rotation, self.neighbours, self.tile)
+        return "Location: %s\nRotation: %s\nTile: %s" % (
+                self.location, self.rotation, self.tile)
 
 def compare_tileset(a, b):
     return int(a[0]) - int(b[0])
+
+edge_to_pos = {EDGES.top: (0, 1),
+               EDGES.bottom: (0, -1),
+               EDGES.left: (-1, 0),
+               EDGES.right: (1, 0)}
 
 pos_to_edge = {(0, -1): EDGES.top,
                (0, 1): EDGES.bottom,
@@ -40,7 +45,6 @@ def relative_pos_to_edge(location1, location2):
 class Board(object):
     def __init__(self, config):
         self.config = config
-        self.entities = {}
         self._setup_tiles(config['base_tiles'], config['tiles'])
 
     def _setup_tiles(self, base_tiles, tiles):
@@ -100,6 +104,13 @@ class Board(object):
 
         return neighbours
 
+    def neighbour_for_edge(self, location, edge):
+        pos = edge_to_pos[edge]
+        x = location[0] + pos[0]
+        y = location[1] + pos[1]
+
+        return self.grid.get((x, y))
+
     def add_to_board(self, tid, location, rotation):
         assert type(rotation) == int
 
@@ -140,35 +151,62 @@ class Board(object):
             if type(n) is not PlayedTile:
                 self.edges.add(n)
 
+        self._update_graphs(tid, location)
+
+        logging.info("Played tile %s at location %s, rotated %s" % (tid, location, rotation))
+        logging.debug("b.add_to_board('%s', %s, tile.ROTATIONS.%s))" % (tid, location, ROTATIONS.by_ordinal(rotation)))
+
+    def _update_graphs(self, tid, location):
         tile = self.boardtiles[tid]
         # second pass, add ourself as neighbours!
         neighbours = self.neighbours_for(location)
 
-        has_neighbours = False
         for n in neighbours:
             if type(n) is PlayedTile:
                 tile.neighbours.append(n)
                 n.neighbours.append(tile)
-                has_neighbours = True
 
-        # add to global entities
-        # if there are no neighbours, create entities
-#        if not has_neighbours:
-#            for pos in tile.tile.positions:
-#                assert pos[1] in ROLE_TO_ENTITY
-#                entity_type = ROLE_TO_ENTITY[pos[1]]
-#                entities_of_type = self.entities.setdefault(entity_type, [])
-#                entity = []
-#                if pos in tile.tile.position_to_connection:
-#                    entity.append((tile.tile.id, tile.tile.position_to_connection[pos]))
-#                    entities_of_type.append(entity)
-#        else:
-#            # else merge with existing or create new
-#            for n in neighbours:
-#                if type(n) is PlayedTile:
-#                    pass
+    def entities(self):
+        for location, tile in self.grid.items():
+            for conn in tile.tile.connections:
+                visit_set = set()
+                for c in conn:
+                    if (tile.tile.id, c) not in visit_set:
+                        visit_set.add((tile.tile.id, c))
+                        visit_set.add(tile.tile.id)
+                        edge = tile.tile.connection_to_edge[c]
+                        i = tile.tile.edge_to_connections[edge].index(c)
+                        self._visit(tile, c, i, visit_set)
+                if len(visit_set) > 2:
+                    print visit_set
 
-        logging.info("Played tile %s at location %s, rotated %s" % (tid, location, rotation))
+    def _visit(self, tile, c, i, visit_set):
+        my_edge = tile.tile.connection_to_edge[c]
+        n = self.neighbour_for_edge(tile.location, my_edge)
+
+        if n:
+            if n.tile.id in visit_set:
+                return
+
+            if n.rotation == ROTATIONS.deg180 and i % 2 == 0:
+                i ^= 2
+
+            print "got n: %s" % n.tile.id
+            that_edge = relative_pos_to_edge(tile.location, n.location)
+            print "got edge: %s" % that_edge
+            print "for i %s" % i
+            print n.tile.edge_to_connections[that_edge]
+            that_connections = n.tile.connection_lookup[n.tile.edge_to_connections[that_edge][i]]
+            print "got connections: %s" % that_connections
+            for c in that_connections:
+                if (n.tile.id, c) not in visit_set:
+                    visit_set.add((n.tile.id, c))
+                    visit_set.add(n.tile.id)
+
+                    edge = n.tile.connection_to_edge[c]
+                    i = n.tile.edge_to_connections[edge].index(c)
+                    print "new i: %s" % i
+                    self._visit(n, c, i, visit_set)
 
     def extremes(self):
         """ Returns the topleft and bottomright corner extreme locations of

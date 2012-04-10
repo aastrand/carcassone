@@ -379,6 +379,24 @@ class TileTest(unittest.TestCase):
         self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg180), 2)
         self.assertEquals(t.get_edge(tile.EDGES.right, tile.ROTATIONS.deg270), 2)
 
+    def test_connection_to_edge(self):
+        t = tile.Tile('1', 'topcityroad', self.topcityroad)
+        self.assertEquals(t.connection_to_edge['0'], 0)
+        self.assertEquals(t.connection_to_edge['1'], 1)
+        self.assertEquals(t.connection_to_edge['2'], 2)
+        self.assertEquals(t.connection_to_edge['3'], 2)
+        self.assertEquals(t.connection_to_edge['4'], 2)
+        self.assertEquals(t.connection_to_edge['5'], 3)
+
+    def test_edge_to_connections(self):
+        lookup = {0: ['0'], 1: ['1'], 2: ['2', '3', '4'], 3: ['5']}
+        t = tile.Tile('1', 'topcityroad', self.topcityroad)
+        self.assertEquals(t.edge_to_connections, lookup)
+
+    def test_connection_lookup(self):
+        t = tile.Tile('1', 'topcityroad', self.topcityroad)
+        print t.connection_lookup
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

@@ -175,11 +175,24 @@ class BoardTest(unittest.TestCase):
         # no playable positions for the cloister now:
         self.assertEquals(b.playable_locations('2'), set())
 
-    def test_initial_entities(self):
+    def test_entities(self):
         b = Board(self.conf)
-        self.assertEquals(b.entities['city'], [[('1', '0')]])
-        self.assertEquals(b.entities['road'], [[('1', '2')]])
-        self.assertEquals(b.entities['field'], [[('1', '5')], [('1', '4')]])
+        b.add_to_board('58', (-1, 0), tile.ROTATIONS.deg180)
+        b.add_to_board('17', (-1, -1), tile.ROTATIONS.deg180)
+#        b.add_to_board('59', (-2, 0), tile.ROTATIONS.deg0)
+#        b.add_to_board('6', (-1, 1), tile.ROTATIONS.deg0)
+#        b.add_to_board('45', (-3, 0), tile.ROTATIONS.deg0)
+
+
+        print b.entities()
+
+    def test_neighbour_for_edge(self):
+        b = Board(self.conf)
+        b.add_to_board('58', (-1, 0), tile.ROTATIONS.deg180)
+        self.assertEquals(b.neighbour_for_edge((0,0), tile.EDGES.top), None)
+        self.assertEquals(b.neighbour_for_edge((0,0), tile.EDGES.bottom), None)
+        self.assertEquals(b.neighbour_for_edge((0,0), tile.EDGES.right), None)
+        self.assertEquals(b.neighbour_for_edge((0,0), tile.EDGES.left), b.grid[(-1, 0)])
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_setup']

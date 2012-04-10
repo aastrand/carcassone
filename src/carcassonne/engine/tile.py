@@ -23,9 +23,10 @@ class Tile(object):
         self.name = name
         self.positions = []
         self.edges = ['']*4
+        self.connection_to_edge = {}
         self.edge_to_connections = {}
-        self.connection_to_type = {}
         self.connections = []
+        self.connection_lookup = {}
 
         self.shield = None
 
@@ -50,19 +51,19 @@ class Tile(object):
             self.connections.append(c)
             for conn in connections:
                 c.append(conn)
+                self.connection_lookup[conn] = c
 
     def _setup_edges(self, edge_config):
         for edge, value in edge_config.items():
             self.edges[EDGES[edge]] = MATERIALS[value['type']]
-            self.edge_to_connections[EDGES[edge]] = value['connections']
+            for c in value['connections']:
+                self.connection_to_edge[c] = EDGES[edge]
+                conns = self.edge_to_connections.setdefault(EDGES[edge], [])
+                conns.append(c)
 
     def _setup_positions(self, position_config):
         for position in position_config:
             self.positions.append(position)
-            if 'connection' in position:
-                for c in self.connections:
-                    if c == position['connection']:
-                        self.connection_to_type[position['connection']] = c 
 
     def __repr__(self):
         return "%s:\nedges: %s\npositions: %s\nshielded: %s\n" % (
@@ -79,5 +80,3 @@ class Tile(object):
     def get_edge(self, edge, rotation):
         return self.edges[(edge - rotation) % 4]
 
-    def unique_connection(self, connection):
-        return '%s-%s' % (self.id, connection)
